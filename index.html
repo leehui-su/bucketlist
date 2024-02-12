@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2024 나만의 신년계획</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2? 제품군= IBM+Plex+Sans+KR:wght@400;500;600;700 & display=swap');
+
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
+    
+    .bg{
+      background-image : url('https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bg-grid.png');
+      backgroud-position : center;
+      backgroud-size : cover;
+      margin : auto;
+      width : 360px;
+    }
+    
+    .title {
+        color: white;
+        background-color: tomato;
+        font-size: 24px;
+        padding: 4px 14px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    .bucket{
+      width: 160px;
+      height: 160px;
+      margin: 8px;
+      position: relative;
+    }
+    
+    .img1{
+      background-image: url('https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bucket-red.png');
+      backgroud-position : center;
+      backgroud-size : cover;
+    }
+    
+    .img2{
+      background-image: url('https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bucket-lightred.png');
+      backgroud-position : center;
+      backgroud-size : cover;
+    }
+
+    .msg{
+      margin: -10px 0 30px;
+      font-weight: bold;
+    }
+
+    .flex-row{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .done::after {
+        content: "";
+        width: 100px;
+        height: 100px;
+        background-image: url("https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/done2024.png");
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 30%;
+        opacity: 0.9;
+    }
+
+    .center{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrap{
+      flex-wrap: wrap;
+    }
+
+    
+  
+  </style
+    
+  <link rel="stylesheet" type="text/css" href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/sparta-bucket2.css">
+
+</head>
+
+<body class="bg center">
+  <h1 class="title">2024 신년계획</h1>
+  <p class="msg center">올해안에 3가지 달성하지 못할 경우,</p>
+  <p class="msg center">ㅇㅇㅇ를 하겠습니다.</p>
+  <div class="row flex-row wrap">
+    <div class="bucket img1 center">영어공부 하루 1챕터씩 완료하기</div>
+    <div class="bucket img2 center">한 달에 2권 독서하기</div>
+    <div class="bucket img2 center">나의 루틴 분석하기</div>
+    <div class="bucket img1 center">매주 회고 작성하기</div>
+    <div class="bucket img1 center">다이어트 -7kg</div>
+    <div class="bucket img2 center">강의 1개씩 뽀개기</div>
+  </div>
+    
+  <script>
+      // 페이지 로드 시 이전 상태 복원
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const buckets = document.querySelectorAll(".bucket");
+        buckets.forEach((bucket, index) => {
+          // 로컬 스토리지에서 상태 읽기
+          const isDone = localStorage.getItem("bucket" + index) === "done";
+          if (isDone) {
+            bucket.classList.add("done");
+          }
+        });
+      });
+
+      // 버킷 리스트 클릭 이벤트
+      const buckets = document.querySelectorAll(".bucket");
+      buckets.forEach((bucket, index) => {
+        bucket.addEventListener("click", function () {
+          // 클래스 토글
+          bucket.classList.toggle("done");
+
+          // 로컬 스토리지에 상태 저장
+          if (bucket.classList.contains("done")) {
+            localStorage.setItem("bucket" + index, "done");
+          } else {
+            localStorage.setItem("bucket" + index, "");
+          }
+        });
+      });
+  </script>
+
+    
+
+</body>
+
+</html>
+            
